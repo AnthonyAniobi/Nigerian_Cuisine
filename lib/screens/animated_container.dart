@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Animation1 extends StatefulWidget {
-  Animation1({Key? key}) : super(key: key);
+class AnimatedContainer1 extends StatefulWidget {
+  AnimatedContainer1({Key? key}) : super(key: key);
 
   @override
   _Animation1State createState() => _Animation1State();
 }
 
-class _Animation1State extends State<Animation1> {
+class _Animation1State extends State<AnimatedContainer1> {
   Duration _animationDuration = Duration(milliseconds: 1000);
 
   Color _backgroundColor = Colors.blueGrey;

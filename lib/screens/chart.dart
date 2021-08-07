@@ -14,6 +14,8 @@ class _ChartState extends State<Chart> {
   double _barChart3Height = 100;
   double _padding = 20;
 
+  bool _isLoadingBarChart = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,17 @@ class _ChartState extends State<Chart> {
         child: Column(
           children: [
             SizedBox(height: 20),
-            _buildCharts(),
+            AnimatedCrossFade(
+                firstChild: Container(
+                    height: 400,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    )),
+                secondChild: _buildCharts(),
+                crossFadeState: _isLoadingBarChart
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                duration: Duration(milliseconds: 500)),
             SizedBox(height: 20),
             _buildButtons(),
           ],
@@ -88,6 +100,7 @@ class _ChartState extends State<Chart> {
                 _barChart1Height = 200;
                 _barChart2Height = 50;
                 _barChart3Height = 150;
+                _isLoadingBarChart = true;
               });
             },
           ),
@@ -104,6 +117,7 @@ class _ChartState extends State<Chart> {
                 _barChart1Height = 50;
                 _barChart2Height = 200;
                 _barChart3Height = 100;
+                _isLoadingBarChart = false;
               });
             },
           ),

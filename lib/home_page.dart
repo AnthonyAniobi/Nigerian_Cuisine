@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_animations/screens/animation1.dart';
+import 'package:learn_animations/screens/animated_container.dart';
 import 'package:learn_animations/screens/chart.dart';
+import 'package:learn_animations/screens/cross_fade.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,9 +28,18 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext ctx) => Animation1()));
+                      builder: (BuildContext ctx) => AnimatedContainer1()));
             },
-            child: Text("animation page1"),
+            child: Text("Animated Container"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext ctx) => CrossFade()));
+            },
+            child: Text("Cross Fade"),
           ),
         ],
       ),
