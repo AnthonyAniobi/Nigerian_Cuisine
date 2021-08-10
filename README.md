@@ -6,4 +6,12 @@
 <ul>
 <li>Animation Container Widget</li>
 <li>Animated Cross Fade Widget</li>
+<li>Animated Position</li>
+<li>Animated Opacity</li>
+<li>Animated phyical model</li>
 </ul>
+
+<h3>Animated Container</h3><br>
+<img src="screenshots/img1.png"><br><br>
+<h3>Animated Chart</h3><br>
+<img src="screenshots/img2.png"><br><br>
