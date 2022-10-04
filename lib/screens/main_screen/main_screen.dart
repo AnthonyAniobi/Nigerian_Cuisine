@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nigerian_cuisine/screens/favorites/favorites_page.dart';
 import 'package:nigerian_cuisine/screens/homepage/homepage.dart';
+import 'package:nigerian_cuisine/screens/meal_plan/meal_plan_page.dart';
+import 'package:nigerian_cuisine/screens/user_profile/user_profile_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainScreen extends StatelessWidget {
@@ -11,7 +14,9 @@ class MainScreen extends StatelessWidget {
   List<Widget> _buildScreens() {
     return [
       Homepage(),
-      Homepage(),
+      MealPlanPage(),
+      FavoritesPage(),
+      UserProfile(),
     ];
   }
 
@@ -24,8 +29,20 @@ class MainScreen extends StatelessWidget {
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.settings),
-        title: ("Settings"),
+        icon: Icon(Icons.table_chart),
+        title: ("Meal plan"),
+        activeColorPrimary: Colors.blue,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.favorite),
+        title: ("Favorites"),
+        activeColorPrimary: Colors.blue,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.person),
+        title: ("Profile"),
         activeColorPrimary: Colors.blue,
         inactiveColorPrimary: Colors.grey,
       ),
