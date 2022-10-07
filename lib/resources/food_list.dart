@@ -92,8 +92,8 @@ class FoodList {
 
   FoodList(
     this.name,
-    this.description,
     this.imageId,
+    this.description,
     this.ingredients,
   );
 }
