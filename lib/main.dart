@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nigerian_cuisine/screens/main_screen/main_screen.dart';
+import 'package:nigerian_cuisine/screens/intro_screen/intro_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainScreen(),
+      home: const IntroScreen(),
     );
   }
 }
