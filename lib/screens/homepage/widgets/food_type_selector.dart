@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/resources/food_list.dart';
 import 'package:nigerian_cuisine/resources/snack_list.dart';
 import 'package:nigerian_cuisine/screens/homepage/widgets/food_card.dart';
-import 'package:nigerian_cuisine/screens/homepage/widgets/snack_card.dart';
 
 class FoodTypeSelector extends StatefulWidget {
   const FoodTypeSelector({
@@ -15,6 +15,7 @@ class FoodTypeSelector extends StatefulWidget {
 
 class _FoodTypeSelectorState extends State<FoodTypeSelector> {
   _Types _selectedType = _Types.food;
+  List<AbstractFoodList> foods = FoodList.list;
   ScrollController scrollController = ScrollController();
 
   @override
@@ -22,7 +23,16 @@ class _FoodTypeSelectorState extends State<FoodTypeSelector> {
     return Expanded(
       child: Stack(
         children: [
-          _gridviewBuilder(),
+          GridView.builder(
+              controller: scrollController,
+              padding: const EdgeInsets.only(left: 50),
+              scrollDirection: Axis.horizontal,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemCount: foods.length,
+              itemBuilder: ((context, index) =>
+                  FoodCard(foodIndex: index, food: foods[index]))),
+          // _gridviewBuilder(),
           SizedBox(
             width: 70,
             child: Column(
@@ -38,43 +48,20 @@ class _FoodTypeSelectorState extends State<FoodTypeSelector> {
     );
   }
 
-  Widget _gridviewBuilder() {
-    if (_selectedType == _Types.food) {
-      return GridView.builder(
-          controller: scrollController,
-          padding: const EdgeInsets.only(left: 50),
-          scrollDirection: Axis.horizontal,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemCount: FoodList.list.length,
-          itemBuilder: ((context, index) =>
-              FoodCard(foodIndex: index, food: FoodList.list[index])));
-    } else if (_selectedType == _Types.snack) {
-      return GridView.builder(
-          controller: scrollController,
-          padding: const EdgeInsets.only(left: 50),
-          scrollDirection: Axis.horizontal,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemCount: FoodList.list.length,
-          itemBuilder: ((context, index) =>
-              SnackCard(snack: SnackList.snacks[index])));
-    } else {
-      return Center(
-        child: Text(
-          "No drinks available",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-      );
-    }
-  }
-
   InkWell _foodTypeButton(_Types type, IconData icon) {
     return InkWell(
       onTap: () {
         setState(() {
+          // remove this when you add drinks
           if (_selectedType != _Types.drink) scrollController.jumpTo(0);
           _selectedType = type;
+          if (type == _Types.food) {
+            foods = FoodList.list;
+          } else if (type == _Types.snack) {
+            foods = SnackList.list;
+          } else {
+            foods = [];
+          }
         });
       },
       child: _FoodType(

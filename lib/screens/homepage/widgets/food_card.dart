@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/resources/food_list.dart';
 import 'package:nigerian_cuisine/screens/food_details/food_details.dart';
 
 class FoodCard extends StatelessWidget {
-  final FoodList food;
+  final AbstractFoodList food;
   final int foodIndex;
   const FoodCard({
     Key? key,
@@ -18,7 +19,8 @@ class FoodCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => FoodDetails(foodIndex: foodIndex)));
+                builder: (context) =>
+                    FoodDetails(foodType: food, foodIndex: foodIndex)));
       },
       child: Hero(
         tag: food.imageId,

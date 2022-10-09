@@ -1,7 +1,8 @@
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/models/app_images.dart';
 
-class SnackList {
-  static final snacks = [
+class SnackList extends AbstractFoodList {
+  static final list = [
     SnackList(
         "Akara",
         AppImages.s_akara_main,
@@ -98,15 +99,17 @@ class SnackList {
         "Nigerian  Suya is one meat snack that speaks for itself. It is popularly prepared with beef fillets.",
         "– Beef OR Chicken (as much as you need)\n– Suya spice or suya pepper ( 2 tablespoonful per 100 gram meat used)\n– Groundnut Oil(also known as peanut oil and smells&tastes like peanut/groundnut)\n– Salt or crushed Stock cube (to taste)\n– Onion slices\n– Tomato slices\n\nYou’ll also need:\n– Wooden or Metal/Iron Skewers\n– Cooking Brush(for oiling the meat)")
   ];
-  String description;
-  String imageId;
-  String ingredients;
-  String name;
 
-  SnackList(
-    this.name,
-    this.imageId,
-    this.description,
-    this.ingredients,
-  );
+  SnackList(super.name, super.imageId, super.description, super.ingredients);
+  // String description;
+  // String imageId;
+  // String ingredients;
+  // String name;
+
+  // SnackList(
+  //   this.name,
+  //   this.imageId,
+  //   this.description,
+  //   this.ingredients,
+  // );
 }

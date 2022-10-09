@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:nigerian_cuisine/models/abstract_food.dart';
+import 'package:nigerian_cuisine/resources/food_list.dart';
 import 'package:nigerian_cuisine/resources/food_procedures.dart';
+import 'package:nigerian_cuisine/resources/snack_list.dart';
+import 'package:nigerian_cuisine/resources/snacks_procedures.dart';
 
 class FoodProcedure extends StatelessWidget {
   final int procedureIndex;
+  final AbstractFoodList food;
+  late List<AbstractFoodProcedure> procedure;
 
-  const FoodProcedure({super.key, required this.procedureIndex});
+  FoodProcedure({super.key, required this.procedureIndex, required this.food}) {
+    if (food is FoodList) {
+      procedure = FoodProcedures.recipe[procedureIndex];
+    } else if (food is SnackList) {
+      procedure = SnacksProcedures.recipe[procedureIndex];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +38,7 @@ class FoodProcedure extends StatelessWidget {
               const SizedBox(height: 20),
               ListView.builder(
                   padding: const EdgeInsets.all(0),
-                  itemCount: FoodProcedures.recipe[procedureIndex].length,
+                  itemCount: procedure.length,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: ((context, index) => Padding(
@@ -75,7 +87,7 @@ class FoodProcedure extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              FoodProcedures.recipe[procedureIndex][index].first,
+              procedure[index].first,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 18,
                   ),
@@ -83,12 +95,12 @@ class FoodProcedure extends StatelessWidget {
             AspectRatio(
               aspectRatio: 1,
               child: Image.asset(
-                FoodProcedures.recipe[procedureIndex][index].imageId,
+                procedure[index].imageId,
                 fit: BoxFit.fitWidth,
               ),
             ),
             Text(
-              FoodProcedures.recipe[procedureIndex][index].second,
+              procedure[index].second,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 18,
                   ),

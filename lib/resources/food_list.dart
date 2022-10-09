@@ -1,6 +1,7 @@
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/models/app_images.dart';
 
-class FoodList {
+class FoodList extends AbstractFoodList {
   static final List<FoodList> list = [
     FoodList(
         "Afang Soup",
@@ -85,15 +86,17 @@ class FoodList {
         "Semolina, Fufu, Amala, Tuwo Masara and Tuwo Shinkafa are popular bolus meals eaten with Nigerian soups.",
         "- 300g Wheat flour OR semolina flour OR fufu flour\n- 500ml Hot water (more or less)")
   ];
-  String description;
-  String imageId;
-  String ingredients;
-  String name;
+  // String description;
+  // String imageId;
+  // String ingredients;
+  // String name;
 
-  FoodList(
-    this.name,
-    this.imageId,
-    this.description,
-    this.ingredients,
-  );
+  FoodList(super.name, super.imageId, super.description, super.ingredients);
+
+  // FoodList(
+  //   this.name,
+  //   this.imageId,
+  //   this.description,
+  //   this.ingredients,
+  // );
 }

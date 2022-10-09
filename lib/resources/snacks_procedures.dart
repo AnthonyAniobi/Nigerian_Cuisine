@@ -1,7 +1,8 @@
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/models/app_images.dart';
 
-class SnacksProcedures {
-  static final cook = [
+class SnacksProcedures extends AbstractFoodProcedure {
+  static final recipe = [
     [
       SnacksProcedures(
           "Soak the beans in water for 1  hour; wash the beans and peel of the coat by rubbing in between your palms\n\nAdd just a little water to the blender, to help it blend easily. Make sure to blend in batches, so that you won’t get granules and bean lumps.",
@@ -444,13 +445,15 @@ class SnacksProcedures {
           "Enjoy")
     ]
   ];
-  String first;
-  String imageId;
-  String second;
 
-  SnacksProcedures(
-    this.first,
-    this.imageId,
-    this.second,
-  );
+  SnacksProcedures(super.first, super.imageId, super.second);
+  // String first;
+  // String imageId;
+  // String second;
+
+  // SnacksProcedures(
+  //   this.first,
+  //   this.imageId,
+  //   this.second,
+  // );
 }

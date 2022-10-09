@@ -8,7 +8,7 @@ abstract class AbstractFoodList {
 
 abstract class AbstractFoodProcedure {
   String first;
-  String second;
   String imageId;
-  AbstractFoodProcedure(this.first, this.second, this.imageId);
+  String second;
+  AbstractFoodProcedure(this.first, this.imageId, this.second);
 }

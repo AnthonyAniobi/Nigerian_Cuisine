@@ -1,6 +1,7 @@
+import 'package:nigerian_cuisine/models/abstract_food.dart';
 import 'package:nigerian_cuisine/models/app_images.dart';
 
-class FoodProcedures {
+class FoodProcedures extends AbstractFoodProcedure {
   static final recipe = [
     [
       FoodProcedures(
@@ -201,13 +202,15 @@ class FoodProcedures {
           "")
     ]
   ];
-  String first;
-  String imageId;
-  String second;
 
-  FoodProcedures(
-    this.first,
-    this.imageId,
-    this.second,
-  );
+  FoodProcedures(super.first, super.imageId, super.second);
+  // String first;
+  // String imageId;
+  // String second;
+
+  // FoodProcedures(
+  //   this.first,
+  //   this.imageId,
+  //   this.second,
+  // );
 }
