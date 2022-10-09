@@ -207,7 +207,7 @@ class FoodProcedures {
 
   FoodProcedures(
     this.first,
-    this.second,
     this.imageId,
+    this.second,
   );
 }

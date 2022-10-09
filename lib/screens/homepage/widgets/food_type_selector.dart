@@ -48,7 +48,7 @@ class _FoodTypeSelectorState extends State<FoodTypeSelector> {
               crossAxisCount: 2),
           itemCount: FoodList.list.length,
           itemBuilder: ((context, index) =>
-              FoodCard(food: FoodList.list[index])));
+              FoodCard(foodIndex: index, food: FoodList.list[index])));
     } else if (_selectedType == _Types.snack) {
       return GridView.builder(
           controller: scrollController,
