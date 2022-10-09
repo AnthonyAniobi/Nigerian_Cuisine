@@ -9,37 +9,37 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
 
-  PersistentTabController _controller =
+  final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
     return [
       Homepage(),
-      RestaurantsHome(),
-      MealPlanPage(),
-      FavoritesPage(),
+      const RestaurantsHome(),
+      const MealPlanPage(),
+      const FavoritesPage(),
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.home),
+        icon: const Icon(Icons.home),
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.restaurant),
+        icon: const Icon(Icons.restaurant),
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.table_chart),
+        icon: const Icon(Icons.table_chart),
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.favorite),
+        icon: const Icon(Icons.favorite),
         activeColorPrimary: Colors.black,
         inactiveColorPrimary: Colors.grey,
       ),
@@ -50,16 +50,19 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
           actions: [
             IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => UserProfile()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserProfile()));
                 },
-                icon: Icon(
+                icon: const Icon(
                   color: Colors.black,
                   Icons.person,
                 ))
@@ -84,12 +87,12 @@ class MainScreen extends StatelessWidget {
           ),
           popAllScreensOnTapOfSelectedTab: true,
           popActionScreens: PopActionScreensType.all,
-          itemAnimationProperties: ItemAnimationProperties(
+          itemAnimationProperties: const ItemAnimationProperties(
             // Navigation Bar's items animation properties.
             duration: Duration(milliseconds: 200),
             curve: Curves.ease,
           ),
-          screenTransitionAnimation: ScreenTransitionAnimation(
+          screenTransitionAnimation: const ScreenTransitionAnimation(
             // Screen transition animation on change of selected tab.
             animateTabTransition: true,
             curve: Curves.ease,

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nigerian_cuisine/resources/restaurant_list.dart';
-import 'package:nigerian_cuisine/screens/homepage/widgets/foodTypeSelector.dart';
-import 'package:nigerian_cuisine/screens/homepage/widgets/restaurantCard.dart';
+import 'package:nigerian_cuisine/screens/homepage/widgets/food_type_selector.dart';
+import 'package:nigerian_cuisine/screens/homepage/widgets/restaurant_card.dart';
+import 'package:nigerian_cuisine/screens/search_result/search_result.dart';
 
 class Homepage extends StatelessWidget {
   Homepage({Key? key}) : super(key: key);
 
   final TextEditingController searchController = TextEditingController();
+
+  void search(BuildContext context, String text) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SearchResult()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +36,28 @@ class Homepage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            fillColor: Colors.red,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: TextField(
+            controller: searchController,
+            decoration: InputDecoration(
+              filled: true,
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    search(context, searchController.text);
+                  },
+                  icon: const Icon(Icons.search)),
+              hintText: 'Search Food...',
+              hintStyle: Theme.of(context).textTheme.bodyMedium,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.0),
+              ),
+            ),
+            onSubmitted: (value) {
+              search(context, value);
+            },
           ),
         ),
         const SizedBox(height: 10),

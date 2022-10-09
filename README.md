@@ -6,4 +6,4 @@ A food recipe application for cooking and setting meal plan. Your meal plan can 
 
 
 ## Credits
-Photo by [Chait Goli](https://www.pexels.com/photo/chicken-curry-in-a-bowl-7353379/)
+Intro screen Photo by [Chait Goli](https://www.pexels.com/photo/chicken-curry-in-a-bowl-7353379/)
