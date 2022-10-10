@@ -6,10 +6,10 @@ import 'package:nigerian_cuisine/screens/food_details/food_procedure.dart';
 
 class FoodDetails extends StatelessWidget {
   final int foodIndex;
-  final foodType;
+  final AbstractFoodList foodType;
   late AbstractFoodList food;
   late List<String> ingredients;
-  FoodDetails({super.key, required this.foodIndex, this.foodType}) {
+  FoodDetails({super.key, required this.foodIndex, required this.foodType}) {
     if (foodType is FoodList) {
       food = FoodList.list[foodIndex];
     } else if (foodType is SnackList) {

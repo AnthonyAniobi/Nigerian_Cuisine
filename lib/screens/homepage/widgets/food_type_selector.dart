@@ -32,7 +32,6 @@ class _FoodTypeSelectorState extends State<FoodTypeSelector> {
               itemCount: foods.length,
               itemBuilder: ((context, index) =>
                   FoodCard(foodIndex: index, food: foods[index]))),
-          // _gridviewBuilder(),
           SizedBox(
             width: 70,
             child: Column(

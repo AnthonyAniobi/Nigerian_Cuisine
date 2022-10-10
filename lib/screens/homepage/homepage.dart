@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nigerian_cuisine/models/meal_time.dart';
 import 'package:nigerian_cuisine/resources/restaurant_list.dart';
 import 'package:nigerian_cuisine/screens/homepage/widgets/food_type_selector.dart';
 import 'package:nigerian_cuisine/screens/homepage/widgets/restaurant_card.dart';
@@ -11,7 +12,11 @@ class Homepage extends StatelessWidget {
 
   void search(BuildContext context, String text) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SearchResult()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => SearchResult(
+                  searchTerm: text,
+                )));
   }
 
   @override
@@ -23,7 +28,7 @@ class Homepage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Hi Excel!',
+            MealTime.currentMeal(),
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),

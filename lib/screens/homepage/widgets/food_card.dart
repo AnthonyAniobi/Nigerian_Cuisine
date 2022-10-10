@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nigerian_cuisine/models/abstract_food.dart';
-import 'package:nigerian_cuisine/resources/food_list.dart';
 import 'package:nigerian_cuisine/screens/food_details/food_details.dart';
 
 class FoodCard extends StatelessWidget {
