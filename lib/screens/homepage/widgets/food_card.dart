@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nigerian_cuisine/models/abstract_food.dart';
+import 'package:nigerian_cuisine/models/food_cache.dart';
+import 'package:nigerian_cuisine/resources/food_list.dart';
+import 'package:nigerian_cuisine/resources/snack_list.dart';
 import 'package:nigerian_cuisine/screens/food_details/food_details.dart';
 
 class FoodCard extends StatelessWidget {
@@ -15,11 +18,18 @@ class FoodCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        FoodCacheType foodType = FoodCacheType.drink;
+        if (food is FoodList) {
+          foodType = FoodCacheType.food;
+        } else if (food is SnackList) {
+          foodType = FoodCacheType.snack;
+        }
+
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    FoodDetails(foodType: food, foodIndex: foodIndex)));
+                builder: (context) => FoodDetails(
+                    foodCache: FoodCache(index: foodIndex, type: foodType))));
       },
       child: Hero(
         tag: food.imageId,

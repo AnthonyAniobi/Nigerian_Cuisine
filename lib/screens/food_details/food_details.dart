@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nigerian_cuisine/models/abstract_food.dart';
+import 'package:nigerian_cuisine/models/food_cache.dart';
 import 'package:nigerian_cuisine/resources/food_list.dart';
 import 'package:nigerian_cuisine/resources/snack_list.dart';
 import 'package:nigerian_cuisine/screens/food_details/food_procedure.dart';
 
 class FoodDetails extends StatelessWidget {
-  final int foodIndex;
-  final AbstractFoodList foodType;
+  final FoodCache foodCache;
   late AbstractFoodList food;
   late List<String> ingredients;
-  FoodDetails({super.key, required this.foodIndex, required this.foodType}) {
-    if (foodType is FoodList) {
-      food = FoodList.list[foodIndex];
-    } else if (foodType is SnackList) {
-      food = SnackList.list[foodIndex];
+  FoodDetails({super.key, required this.foodCache}) {
+    if (foodCache.type == FoodCacheType.food) {
+      food = FoodList.list[foodCache.index];
+    } else if (foodCache.type == FoodCacheType.snack) {
+      food = SnackList.list[foodCache.index];
     }
     ingredients = food.ingredients.split('\n');
   }
@@ -46,7 +46,7 @@ class FoodDetails extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => FoodProcedure(
-                          food: food, procedureIndex: foodIndex))));
+                          food: food, procedureIndex: foodCache.index))));
             },
             child: Container(
               height: 50,
